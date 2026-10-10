@@ -30,9 +30,21 @@ child's pane are not sent back. While a reply is pending the pane token `$bg` na
 (`child auth-fix`). Children are saved per parent session in
 `~/.local/share/opencode-herdr/children/<session>.json`, so pending replies survive a restart.
 
-A subagent (opencode's `task` tool) is still the tool for a bounded task that only returns a
-result; a herdr child is for long or open-ended work, its own branch, or anything the user may want
-to watch, steer or take over.
+Use a subagent (opencode's `task` tool) for delegated work that reports back to the parent, even
+when long, multi-step, or parallel. Use a Herdr child only for an explicit interactive-session
+request or a clear persistent, human-led handoff that the user will continue independently.
+Duration and a hypothetical desire to watch are not reasons to create an interactive session.
+
+Choose layout only after deciding an interactive session is appropriate:
+
+- `tab` (default): same checkout and branch, in the existing Herdr space.
+- `split`: deliberate side-by-side interaction, or a requested split.
+- `worktree`: user-requested independent branch/checkout, in that checkout's own space (or a tab
+  there if already open). Ask first unless the user requested a worktree or branch isolation.
+
+Tabs and splits share files and are not isolated parallel editors. Never create a new space or
+checkout merely because work is delegated, long, or parallel. Preserve focus unless asked to
+switch.
 
 Only a server in a herdr pane does anything: opencode's TUI runs its server in-process, so it sees
 `HERDR_PANE_ID`. A shared server (`opencode serve`, or the one behind `opencode attach`) cannot tell
