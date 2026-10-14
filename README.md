@@ -1,3 +1,5 @@
+> **Retired.** This plugin now lives in [opencode-plugins](https://github.com/justmytwospence/opencode-plugins/tree/main/packages/opencode-herdr), ported to OpenCode 2. This repository is archived for history; do not install it alongside the suite.
+
 # opencode-herdr
 
 opencode's own [herdr](https://herdr.dev) additions, beside the integration herdr installs
